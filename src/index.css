@@ -1,0 +1,311 @@
+@font-face {
+	font-family: 'LEMONMILKPro-Regular';
+	src: url(./fonts/LEMONMILKPro-Regular.otf);
+}
+@font-face {
+	font-family: 'LEMONMILKPro-Bold';
+	src: url(./fonts/LEMONMILKPro-Bold.otf);
+}
+@font-face {
+	font-family: 'Futura-Medium';
+	src: url(./fonts/futuram.ttf);
+}
+
+:root {
+	font-family: sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	place-items: center;
+	user-select: none;
+	overflow: hidden;
+}
+
+.container {
+	position: fixed;
+	transform: rotate(-90deg);
+	transform-origin: 0 0;
+	width: 100vh;
+	height: 100vw;
+	left: 0;
+	top: 100%;
+}
+.container2 {
+	transform-origin: 50% 50%;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.container2.flip {
+	transform: scale(-1, -1);
+}
+.background {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	top: 0;
+	left: 0;
+}
+
+.game {
+	.header {
+		box-sizing: border-box;
+		padding-top: 8vw;
+		height: 22vw;
+		color: black;
+		text-align: center;
+		display: flex;
+		gap: 3vh;
+		flex-direction: column;
+	}
+
+	h1 {
+		font-family: 'LEMONMILKPro-Bold';
+		padding: 0;
+		margin: 0;
+		font-size: 5vh;
+		letter-spacing: 1vh;
+		line-height: 0.7;
+	}
+
+	h2 {
+		font-family: 'LEMONMILKPro-Regular';
+		padding: 0;
+		margin: 0;
+		font-size: 2vw;
+		letter-spacing: 0.7vh;
+		line-height: 0.7;
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5vw;
+		height: 70vw;
+		width: 30vw;
+		margin: 0 auto;
+	}
+
+	.card {
+		display: flex;
+		transition: transform calc(0.5s / 4);
+		text-decoration: none;
+		color: inherit;
+		height: 100%;
+		width: 100%;
+		perspective: 100vw;
+	}
+
+	.card-body {
+		transform-style: preserve-3d;
+		transition: 0.5s transform;
+	}
+
+	.card.flipped .card-body {
+		transform: rotateY(-180deg);
+	}
+
+	.card:active {
+		transform: scale(0.975);
+	}
+
+	.card-body {
+		border-radius: 0.25rem;
+		flex: 1;
+		height: 100%;
+		width: 100%;
+	}
+
+	.card-front,
+	.card-back {
+		box-shadow: 0.5vw 0.1vw 1vw 0 rgba(65, 66, 66, 0.55);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: white;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+		backface-visibility: hidden;
+	}
+
+	.card-front {
+		padding: 14%;
+		font-size: 1.5rem;
+	}
+
+	.card-back {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 6%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.8vh;
+		transform: rotateY(-180deg);
+	}
+
+	.card-back img {
+		height: 9.2vw;
+		display: block;
+		margin: auto;
+	}
+
+	.card-back .card-back-text {
+		font-family: 'Futura-Medium';
+		font-size: 1.8vh;
+		color: #000;
+		min-height: 0;
+	}
+
+	.color0 {
+		background: #c26b00;
+	}
+	.color1 {
+		background: #977d75;
+	}
+	.color2 {
+		background: #d1c5aa;
+	}
+
+	.color0 img {
+		filter: invert(100%);
+	}
+	.color1 img {
+		filter: invert(100%);
+	}
+	.infoText {
+		text-align: center;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		font-family: 'LEMONMILKPro-Regular';
+		font-size: 2.5vw;
+		text-transform: uppercase;
+		color: #c26b00;
+		text-stroke: black 0.1vw;
+		-webkit-text-stroke: #0008 0.1vw;
+		padding: 2vw;
+		background: #fffa;
+	}
+}
+
+.video {
+	video {
+		position: fixed;
+		left: 100%;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		transform: rotate(90deg);
+		transform-origin: 0 0;
+	}
+
+	.buttonsWrapper {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: 20vw;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.description {
+	box-sizing: border-box;
+	color: black;
+	text-align: center;
+	height: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2vw;
+	padding: 3vw 2vw;
+
+	p {
+		font-family: 'Futura-Medium';
+		font-size: 2vw;
+		padding: 0;
+		margin: 0;
+	}
+	.wineName {
+		display: flex;
+		gap: 1vw;
+	}
+	h3 {
+		font-family: 'LEMONMILKPro-Regular';
+		font-size: 2vw;
+		text-transform: uppercase;
+		margin: 0;
+	}
+	h1 {
+		color: #c26b00;
+		font-family: 'LEMONMILKPro-Bold';
+		padding: 0;
+		margin: 0;
+		font-size: 5vh;
+		letter-spacing: 1vh;
+		line-height: 0.7;
+		text-transform: uppercase;
+	}
+	h2 {
+		font-family: 'LEMONMILKPro-Bold';
+		padding: 0;
+		margin: 0;
+		font-size: 5vh;
+		letter-spacing: 1vh;
+		line-height: 0.7;
+		text-transform: uppercase;
+	}
+	img {
+		margin: 2vw 0;
+		height: 35vw;
+	}
+	.buttons {
+		display: inline-flex;
+		gap: 10vw;
+	}
+	.buttonsWrapper {
+		margin-top: 5vw;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.button {
+	text-align: center;
+	display: inline-block;
+	border-radius: 100px;
+	background-color: #c26b00;
+	border: white 0.3vw solid;
+	outline: #c26b00 0.5vw solid;
+	font-size: 2vw;
+	text-transform: uppercase;
+	padding: 0.6vw 2vw;
+	min-width: 12vw;
+	margin: 0 auto;
+	box-shadow: 0 0 0.6vw 0.3vw #c26b00;
+	color: white;
+}
